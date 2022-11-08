@@ -45,6 +45,42 @@ const resolvers = {
                     movie.year >= 1990 && movie.year <= 2010
             )
         }
+    },
+
+    Mutation: {
+        createUser: (parent, args) => {
+            const user = args.input
+            // Gets the last id in the list
+            const lastId = UserList[UserList.length - 1].id
+            // Increment the Id of the newly created user obj
+            user.id = lastId + 1
+            UserList.push(user)
+
+            return user
+        },
+
+        updateUsername: (parent, args) => {
+            let userUpdated;
+            const {id, newUsername} = args.input
+
+            UserList.forEach((user) => {
+                if (user.id === Number(id)) {
+                    user.username = newUsername
+                    userUpdated = user
+                }
+            })
+            return userUpdated
+        },
+
+        deleteUser: (parent, args) => {
+            const id = args.id
+            _.remove(
+                UserList,
+                (user) =>
+                    user.id === Number(id))
+
+            return
+        }
     }
 }
 

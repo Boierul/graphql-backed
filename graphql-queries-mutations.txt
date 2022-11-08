@@ -1,0 +1,102 @@
+Get All Users
+
+query getAllUsers {
+  users {
+    id,
+    username,
+    name,
+    nationality,
+    age,
+    friends {
+      name,
+      age
+    },
+    favoriteMovies {
+      title,
+      year
+    }
+  }
+}
+
+
+Get one user
+
+query getUserByID($userId: ID!){
+  user(id: $userId) {
+    name,
+    age,
+    nationality
+  }
+}
+
+{
+  "userId": 3
+}
+
+Get All Movies
+
+query getAllMovies {
+  movies {
+    id,
+    title,
+    year,
+    producedBy,
+    isInTheaters
+  }
+}
+
+Get Movie by name
+
+query getMovieByName($title: String!){
+  movie(title: $title) {
+    title,
+    year,
+    isInTheaters
+  }
+}
+
+{
+  "title": "Dunkirk"
+}
+
+
+Create a user like POST
+
+mutation CreateUser($input: CreateUserInput!) {
+  createUser(input: $input) {
+    id,
+    name,
+    age
+  }
+}
+
+Variables
+{
+  "input": {
+    "name": "Pasha",
+    "age": 22,
+    "username": "radik",
+    "nationality": "GERMANY"
+  }
+}
+
+# Update a user username - PATCH
+
+# mutation UpdateUsername($input: UpdateUsernameInput!) {
+#   updateUsername(input: $input) {
+#     id,
+#     username
+#   }
+# }
+
+# Delete a user - DELETE
+
+mutation DeleteUser($deleteUserId: ID!) {
+  deleteUser(id: $deleteUserId) {
+    username
+  }
+}
+
+{
+  "deleteUserId": 2
+}

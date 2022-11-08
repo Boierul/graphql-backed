@@ -13,8 +13,7 @@ const UserList = [
                 age: 19,
                 nationality: "GERMANY",
             }
-        ],
-        favoriteMovies: []
+        ]
     },
     {
         id: 2,
@@ -30,8 +29,7 @@ const UserList = [
                 age: 22,
                 nationality: "ESTONIA",
             }
-        ],
-        favoriteMovies: []
+        ]
     },
     {
         id: 3,
@@ -39,8 +37,7 @@ const UserList = [
         username: "godmusic",
         age: 44,
         nationality: "US",
-        friends: [],
-        favoriteMovies: []
+        friends: []
     }
 ]
 
